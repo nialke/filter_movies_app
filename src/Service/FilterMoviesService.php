@@ -13,7 +13,7 @@ class FilterMoviesService
      * @param array<string> $movies
      * @return array<string>
      */
-    public function getRandomMovieTitles(
+    public function getRandomMovies(
         int $count = 3,
         array $movies = MoviesList::ALL_MOVIES
     ): array {
