@@ -224,6 +224,30 @@ class FilterMoviesServiceTest extends TestCase
         static::assertEquals($expectedArray, array_values($result));
     }
 
+
+    /**
+     * @test
+     */
+    public function givenNothingAsChar_whenGetMoviesStartingWithCharWithEvenCharacterCount_shouldReturnArray(): void
+    {
+        // given
+        $expectedArray = [
+            "Wanda i 123 smerfy",
+            "worek ziemniaków",
+            ' wartość ze  spacjami '
+        ];
+
+        $expectedCount = count($expectedArray);
+
+        // when
+        $result = $this->filterMoviesService->getMoviesStartingWithCharWithEvenCharacterCount(movies: $this->movies());
+
+        //then
+        static::assertIsArray($result);
+        static::assertCount($expectedCount, $result);
+        static::assertEquals($expectedArray, array_values($result));
+    }
+
     /**
      * @test
      */
@@ -391,11 +415,9 @@ class FilterMoviesServiceTest extends TestCase
     /**
      * @test
      */
-    public function givenValid_whenGetMoviesWithMinimumWordCount_shouldReturnArray(): void
+    public function givenNothingAsMinimumCount_whenGetMoviesWithMinimumWordCount_shouldReturnArray(): void
     {
         // given
-        $count = 2;
-
         $expectedArray = [
             "Pulp Fiction",
             "Skazani na Shawshank",
@@ -404,6 +426,38 @@ class FilterMoviesServiceTest extends TestCase
             "Wrotkowe szaleństwa",
             "worek ziemniaków",
             "worek ziemniaków2",
+            " wartość ze  spacjami ",
+            " wartość z wieloma  spacjami ",
+            "123 powody, żeby się zakochać",
+            "123 powody, żeby się zakochać2",
+            "Pachnidło: Historia mordercy",
+            "&& w programowaniu",
+            "&& w programowaniu2",
+        ];
+
+        $expectedCount = count($expectedArray);
+
+        // when
+        $result = $this->filterMoviesService->getMoviesWithMinimumWordCount(movies: $this->movies());
+
+        // then
+        static::assertIsArray($result);
+        static::assertCount($expectedCount, $result);
+        static::assertEquals($expectedArray, array_values($result));
+    }
+
+    /**
+     * @test
+     */
+    public function givenValid_whenGetMoviesWithMinimumWordCount_shouldReturnArray(): void
+    {
+        // given
+        $count = 3;
+
+        $expectedArray = [
+            "Skazani na Shawshank",
+            "Dwunastu gniewnych ludzi & ja",
+            "Wanda i 123 smerfy",
             " wartość ze  spacjami ",
             " wartość z wieloma  spacjami ",
             "123 powody, żeby się zakochać",
