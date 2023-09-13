@@ -65,7 +65,7 @@ class FilterMoviesService
      * @return array<string>
      */
     public function getMoviesWithMinimumWordCount(
-        int $minimumCount = 1,
+        int $minimumCount = 2,
         array $movies = MoviesList::ALL_MOVIES
     ): array {
         if ($minimumCount < 0) {
