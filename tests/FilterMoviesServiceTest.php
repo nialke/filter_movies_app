@@ -30,7 +30,7 @@ class FilterMoviesServiceTest extends TestCase
         $count = -5;
 
         // when
-        $this->filterMoviesService->getRandomMovieTitles($count, $this->movies());
+        $this->filterMoviesService->getRandomMovies($count, $this->movies());
 
         // then
     }
@@ -47,7 +47,7 @@ class FilterMoviesServiceTest extends TestCase
         $count = PHP_INT_MIN;
 
         // when
-        $this->filterMoviesService->getRandomMovieTitles($count, $this->movies());
+        $this->filterMoviesService->getRandomMovies($count, $this->movies());
 
         // then
     }
@@ -64,7 +64,7 @@ class FilterMoviesServiceTest extends TestCase
         $count = PHP_INT_MAX;
 
         // when
-        $this->filterMoviesService->getRandomMovieTitles($count, $this->movies());
+        $this->filterMoviesService->getRandomMovies($count, $this->movies());
 
         // then
     }
@@ -81,7 +81,7 @@ class FilterMoviesServiceTest extends TestCase
         $count = 0;
 
         // when
-        $this->filterMoviesService->getRandomMovieTitles($count, $this->movies());
+        $this->filterMoviesService->getRandomMovies($count, $this->movies());
 
         // then
     }
@@ -99,7 +99,7 @@ class FilterMoviesServiceTest extends TestCase
         $count = count($movies) + 1;
 
         // when
-        $this->filterMoviesService->getRandomMovieTitles($count, $movies);
+        $this->filterMoviesService->getRandomMovies($count, $movies);
 
         // then
     }
@@ -113,7 +113,7 @@ class FilterMoviesServiceTest extends TestCase
         $movies = $this->movies();
 
         // when
-        $result = $this->filterMoviesService->getRandomMovieTitles(movies: $movies);
+        $result = $this->filterMoviesService->getRandomMovies(movies: $movies);
 
         // then
         static::assertIsArray($result);
@@ -133,7 +133,7 @@ class FilterMoviesServiceTest extends TestCase
         $movies = $this->movies();
 
         // when
-        $result = $this->filterMoviesService->getRandomMovieTitles($count, $movies);
+        $result = $this->filterMoviesService->getRandomMovies($count, $movies);
 
         // then
         static::assertIsArray($result);

@@ -24,7 +24,7 @@ class FilterMoviesController extends AbstractController
     #[Route('/random', name: 'random', methods: 'GET')]
     public function random(): Response
     {
-        return new Response(implode('</br>', $this->filterMoviesService->getRandomMovieTitles()));
+        return new Response(implode('</br>', $this->filterMoviesService->getRandomMovies()));
     }
 
     #[Route('/firstChar', name: 'first_char', methods: 'GET')]
